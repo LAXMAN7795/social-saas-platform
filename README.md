@@ -245,7 +245,7 @@ social-saas-platform/
 
 ## 👨‍💻 Author
 
-**Laxman Gouda**
+**Laxman Sannu Gouda**
 
 ---
 
