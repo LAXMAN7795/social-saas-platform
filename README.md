@@ -25,20 +25,9 @@ A full-stack AI-powered social media management platform that allows users to cr
 ---
 
 ## 🏗️ Architecture
+![Architecture Diagram](saas_architecture.png)
 
-```
-Frontend (React + Vite, Cloudflare Pages)
-        ↓
-Backend (FastAPI, Render)
-        ↓
-Database (SQLite / PostgreSQL)
-        ↓
-External APIs:
-   • Telegram Bot API
-   • Groq AI API
-```
-
----
+<p align="center"><i>Figure: System Architecture</i></p>
 
 ## ⚙️ Tech Stack
 
