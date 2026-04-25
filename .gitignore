@@ -1,0 +1,18 @@
+# Python
+social/
+__pycache__/
+*.pyc
+*.pyo
+*.db
+.env
+
+# Node
+node_modules/
+dist/
+build/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
