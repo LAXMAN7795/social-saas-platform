@@ -235,14 +235,6 @@ social-saas-platform/
 
 ---
 
-## 🔐 Cloudflare Access (Submission Requirement)
-
-* Cloudflare Project: Shared / accessible
-* Repository: GitHub connected
-* Environment variables configured
-
----
-
 ## 🧠 Key Highlights
 
 * Modular architecture for easy platform integration
