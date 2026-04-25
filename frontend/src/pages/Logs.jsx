@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../api";
 
 export default function Logs() {
   const [logs, setLogs] = useState([]);
@@ -8,7 +9,7 @@ export default function Logs() {
   }, []);
 
   const fetchLogs = async () => {
-    const res = await fetch("http://127.0.0.1:8000/posts/logs");
+    const res = await fetch(`${BASE_URL}/posts/logs`);
     const data = await res.json();
     setLogs(data);
   };
@@ -55,12 +56,12 @@ export default function Logs() {
                 {log.media_url ? (
                   log.media_type?.startsWith("image") ? (
                     <img
-                      src={`http://127.0.0.1:8000/${log.media_url}`}
+                      src={`${BASE_URL}/${log.media_url}`}
                       className="w-14 h-14 object-cover rounded-md border"
                     />
                   ) : (
                     <a
-                      href={`http://127.0.0.1:8000/${log.media_url}`}
+                      href={`${BASE_URL}/${log.media_url}`}
                       target="_blank"
                       className="text-indigo-600 text-xs underline"
                     >

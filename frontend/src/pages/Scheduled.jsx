@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../api";
 
 export default function Scheduled() {
   const [posts, setPosts] = useState([]);
@@ -9,7 +10,7 @@ export default function Scheduled() {
 
   const fetchPosts = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:8000/posts/");
+      const res = await fetch(`${BASE_URL}/posts/`);
       const data = await res.json();
       setPosts(data);
     } catch (err) {
@@ -59,12 +60,12 @@ export default function Scheduled() {
             {post.media_url ? (
               post.media_type?.startsWith("image") ? (
                 <img
-                  src={`http://127.0.0.1:8000/${post.media_url}`}
+                  src={`${BASE_URL}/${post.media_url}`}
                   className="w-14 h-14 object-cover rounded-md border"
                 />
               ) : (
                 <a
-                  href={`http://127.0.0.1:8000/${post.media_url}`}
+                  href={`${BASE_URL}/${post.media_url}`}
                   target="_blank"
                   className="text-indigo-600 text-xs underline"
                 >

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BASE_URL } from "../api";
 
 export default function CreatePost() {
   const [content, setContent] = useState("");
@@ -31,13 +32,8 @@ export default function CreatePost() {
     );
   };
 
-  // Fetch media
-  useEffect(() => {
-    fetchMedia();
-  }, []);
-
   const fetchMedia = async () => {
-    const res = await fetch("http://127.0.0.1:8000/media/");
+    const res = await fetch(`${BASE_URL}/media/`);
     const data = await res.json();
     setMediaList(data);
   };
@@ -47,7 +43,7 @@ export default function CreatePost() {
   }, []);
 
   const fetchPlatforms = async () => {
-    const res = await fetch("http://127.0.0.1:8000/posts/platforms");
+    const res = await fetch(`${BASE_URL}/posts/platforms`);
     const data = await res.json();
     setPlatformList(data);
   };
@@ -56,7 +52,7 @@ export default function CreatePost() {
     setLoading(label);
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000${endpoint}`, {
+      const res = await fetch(`${BASE_URL}${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -83,7 +79,7 @@ export default function CreatePost() {
     console.log("PLATFORMS SELECTED:", platforms);
     console.log("MEDIA:", selectedMedia);
 
-    const res = await fetch("http://127.0.0.1:8000/posts/", {
+    const res = await fetch(`${BASE_URL}/posts/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -147,7 +143,7 @@ export default function CreatePost() {
                 >
                   {m.type.startsWith("image") ? (
                     <img
-                      src={`http://127.0.0.1:8000/${m.file_url}`}
+                      src={`${BASE_URL}/${m.file_url}`}
                       className="h-20 w-full object-cover"
                     />
                   ) : (
@@ -165,14 +161,14 @@ export default function CreatePost() {
             <Card title="Preview">
               {selectedMedia.type.startsWith("image") ? (
                 <img
-                  src={`http://127.0.0.1:8000/${selectedMedia.file_url}`}
+                  src={`${BASE_URL}/${selectedMedia.file_url}`}
                   className="w-full max-h-64 object-contain rounded"
                 />
               ) : (
                 <div className="text-sm">
                   📄 File selected —{" "}
                   <a
-                    href={`http://127.0.0.1:8000/${selectedMedia.file_url}`}
+                    href={`${BASE_URL}/${selectedMedia.file_url}`}
                     target="_blank"
                     className="text-indigo-600 underline"
                   >

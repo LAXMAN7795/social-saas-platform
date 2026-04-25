@@ -1,0 +1,1 @@
+export const BASE_URL = "https://social-saas-platform.onrender.com";

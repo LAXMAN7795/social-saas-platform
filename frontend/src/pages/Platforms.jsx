@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../api";
 
 export default function Platforms() {
   const [platforms, setPlatforms] = useState([]);
@@ -10,26 +11,26 @@ export default function Platforms() {
   }, []);
 
   const fetchPlatforms = async () => {
-    const res = await fetch("http://127.0.0.1:8000/posts/platforms");
+    const res = await fetch(`${BASE_URL}/posts/platforms`);
     const data = await res.json();
     setPlatforms(data);
   };
 
   const fetchConnected = async () => {
-    const res = await fetch("http://127.0.0.1:8000/posts/platforms/connected");
+    const res = await fetch(`${BASE_URL}/posts/platforms/connected`);
     const data = await res.json();
     setConnected(data);
   };
 
   const connect = async (id) => {
-    await fetch(`http://127.0.0.1:8000/posts/platforms/connect/${id}`, {
+    await fetch(`${BASE_URL}/posts/platforms/connect/${id}`, {
       method: "POST"
     });
     fetchConnected();
   };
 
   const disconnect = async (id) => {
-    await fetch(`http://127.0.0.1:8000/posts/platforms/disconnect/${id}`, {
+    await fetch(`${BASE_URL}/posts/platforms/disconnect/${id}`, {
       method: "POST"
     });
     fetchConnected();

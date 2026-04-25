@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../api";
 
 export default function Dashboard() {
   const [stats, setStats] = useState({});
@@ -10,13 +11,13 @@ export default function Dashboard() {
   }, []);
 
   const fetchStats = async () => {
-    const res = await fetch("http://127.0.0.1:8000/posts/stats");
+    const res = await fetch(`${BASE_URL}/posts/stats`);
     const data = await res.json();
     setStats(data);
   };
 
   const fetchRecent = async () => {
-    const res = await fetch("http://127.0.0.1:8000/posts/recent");
+    const res = await fetch(`${BASE_URL}/posts/recent`);
     const data = await res.json();
     setRecent(data);
   };
@@ -69,7 +70,7 @@ export default function Dashboard() {
                 {post.media_url ? (
                   post.media_type?.startsWith("image") ? (
                     <img
-                      src={`http://127.0.0.1:8000/${post.media_url}`}
+                      src={`${BASE_URL}/${post.media_url}`}
                       className="w-16 h-16 object-cover rounded-md border"
                     />
                   ) : (

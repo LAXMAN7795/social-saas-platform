@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../api";
 
 export default function Media() {
   const [files, setFiles] = useState([]);
@@ -9,7 +10,7 @@ export default function Media() {
   }, []);
 
   const fetchMedia = async () => {
-    const res = await fetch("http://127.0.0.1:8000/media/");
+    const res = await fetch(`${BASE_URL}/media/`);
     const data = await res.json();
     setMedia(data);
   };
@@ -28,7 +29,7 @@ export default function Media() {
     console.log(pair[0], pair[1]);
   }
 
-  const res = await fetch("http://127.0.0.1:8000/media/upload", {
+  const res = await fetch(`${BASE_URL}/media/upload`, {
     method: "POST",
     body: formData
   });
@@ -67,14 +68,14 @@ export default function Media() {
           <div key={m.id} className="border p-2 rounded-lg">
             {m.type.startsWith("image") ? (
             <img
-                src={`http://127.0.0.1:8000/${m.file_url}`}
+                src={`${BASE_URL}/${m.file_url}`}
                 className="w-full h-32 object-cover rounded"
             />
             ) : (
             <div className="flex flex-col items-center justify-center h-32 bg-gray-100 rounded text-sm text-gray-600">
                 📄 File
                 <a
-                href={`http://127.0.0.1:8000/${m.file_url}`}
+                href={`${BASE_URL}/${m.file_url}`}
                 target="_blank"
                 className="text-indigo-600 underline mt-1"
                 >
