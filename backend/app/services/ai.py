@@ -1,5 +1,7 @@
 import requests
-from app.config import GROQ_API_KEY
+import os
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 URL = "https://api.groq.com/openai/v1/chat/completions"
 
