@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from app.routes import auth
 from app.routes import media
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # DB imports
